@@ -25,6 +25,7 @@
 #'
 #' logs <- extract_table(mydb,"mdl_log")
 #' @export
+
 extract_table <- function(connection,table,selection=NULL){
   if(is.null(selection)){
     statement <- paste("SELECT * from",table)

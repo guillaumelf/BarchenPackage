@@ -2,4 +2,5 @@
 
 export(add_origin)
 export(create_qr)
+export(create_results)
 export(extract_table)
