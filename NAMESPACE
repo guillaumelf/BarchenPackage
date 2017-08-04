@@ -3,3 +3,4 @@
 export(add_origin)
 export(create_qr)
 export(extract_table)
+export(create_results)
