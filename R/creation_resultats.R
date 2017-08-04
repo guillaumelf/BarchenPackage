@@ -84,6 +84,7 @@ create_results <- function(succes,echec,resultats_vi,users){
   setkey(users,nom,prenom)
   setkey(resultats,nom,prenom)
   resultats <- resultats[users,nomatch=0]
+  resultats[, inscription := as.IDate(inscription)]
   
   # On ordonne par userid : certains ont plusieurs tentatives forcément, on ne va garder que la première
   
@@ -104,5 +105,7 @@ create_results <- function(succes,echec,resultats_vi,users){
   resultats <- resultats[!(stringr::str_detect(inscription,"1970"))]
   resultats <- resultats[, .(userid,`%A`,`%C`,resultat,inscription,date)]
   names(resultats) <- c("userid","%A","%C","resultat","inscription","examen")
+  resultats[, delta := difftime(examen,inscription,units = "days")]
+  resultats$delta <- as.numeric(resultats$delta)
   return(resultats)
 }
