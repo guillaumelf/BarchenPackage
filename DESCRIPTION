@@ -1,10 +1,10 @@
 Package: Barchen
 Type: Package
-Title: This is a package to help Bärchen analyze its students and make decisions 
+Title: This is a package to help Barchen analyze its students and make decisions 
 Version: 0.1.0
 Author: Guillaume Le Floch
 Maintainer: Guillaume Le Floch <guillaume.lefloch56@gmail.com>
-Description: This package will enable Bärchen workers to analyze their students by extracting logs from their database, performing clusterings based on PCA results,
+Description: This package will enable Barchen workers to analyze their students by extracting logs from their database, performing clusterings based on PCA results,
     and modelizing the patterns which lead to success or failure at the final exam, thanks to decision trees and visualization tools developped
     by Datastorm. Machine Learning algorithms such as Logistic Regression, Random Forest or k-means will also be used to perform predictions.
 Depends: bestglm (>= 0.36),
