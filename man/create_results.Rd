@@ -34,7 +34,7 @@ res_vi <- data.table(read_excel(paste0(path,"Extraction Résultats Validation In
 resultats <- create_results(succes,echecs,resultats_vi)
 tail(resultats,3)
 
-## This is was you'll get :
+## This is what you'll get :
 ##   userid  \%A \%C resultat         inscription     examen
 ##1:  49615  47 43        0 2017-04-14 10:17:56 2017-04-19
 ##2:  50405  88 88        1 2017-05-18 13:20:29 2011-10-01
