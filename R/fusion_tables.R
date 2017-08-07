@@ -58,5 +58,7 @@ create_qr <- function(tab1,tab2,tab3){
   
   
   qr <- tab[,.(grade, timestamp, userid, niveau, name, attempt, exam )]
+  qr[,c("idate","time") := tstrsplit(timestamp, " ", fixed=TRUE)][, time := NULL]
+  qr[, idate := as.IDate(idate)]
   return(qr)
 }
