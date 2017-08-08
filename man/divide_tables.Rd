@@ -11,7 +11,7 @@ divide_tables(tab1, tab2, divisions)
 
 \item{tab2}{A data.table  object containing the inscription date.}
 
-\item{divisions}{A number which indicates how many parts you want to divide your tables into.}
+\item{divisions}{A number which indicates how many parts you want to divide your table into.}
 }
 \value{
 A list of subsets from the main table.

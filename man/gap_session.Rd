@@ -16,6 +16,6 @@ A data.table object with the gaps between sessions for each indivdual, across th
 This function will calculate gaps between sessions (in hours) for each individual.
 }
 \examples{
-tab <- gap_session(liste_log,divisions)
+tab <- gap_session(liste_log)
 }
 

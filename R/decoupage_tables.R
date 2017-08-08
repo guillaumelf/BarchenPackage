@@ -4,7 +4,7 @@
 #'
 #' @param tab1 A data.table object containing the table you want to divide.
 #' @param tab2 A data.table  object containing the inscription date.
-#' @param divisions A number which indicates how many parts you want to divide your tables into.
+#' @param divisions A number which indicates how many parts you want to divide your table into.
 #' @return A list of subsets from the main table.
 #' @examples
 #' ## You want to divide the logs  into 5 parts

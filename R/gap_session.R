@@ -5,7 +5,7 @@
 #' @param list_tab A list of the different logs tables.
 #' @return A data.table object with the gaps between sessions for each indivdual, across the number of phases you have chosen.
 #' @examples
-#' tab <- gap_session(liste_log,divisions)
+#' tab <- gap_session(liste_log)
 #' @export
 
 gap_session <- function(list_tab){
