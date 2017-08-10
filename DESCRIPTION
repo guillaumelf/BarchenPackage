@@ -10,7 +10,7 @@ Description: This package will enable Barchen workers to analyze their students 
 Depends: bestglm (>= 0.36),
     caret (>= 6.0-76),
     data.table (>= 1.9.6),
-    dplyr (=> 0.4.1),
+    dplyr (>= 0.4.1),
     FactoMineR (>= 1.31.3),
     ggplot2 (>= 2.1.0),
     rAmCharts (>= 2.1.3),
