@@ -10,7 +10,7 @@ plot.clusters(tab)
 \item{tab}{A data.table or data.frame object containing the data with clusters.}
 }
 \value{
-A dataframe with original data and the clusters associated to each individual.
+The barplot representing the results.
 }
 \description{
 This function will perform a barplot to represent each cluster's size.

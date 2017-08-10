@@ -8,8 +8,6 @@ change_labels(tab)
 }
 \arguments{
 \item{tab}{A data.table object containing the cluster labels.}
-
-\item{results}{A list with the results of a PCA.}
 }
 \value{
 A data.table with the new cluster labels.

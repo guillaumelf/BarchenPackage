@@ -4,10 +4,12 @@
 \alias{clustering}
 \title{Performs a clustering on PCA results}
 \usage{
-clustering(tab, results, nb.max.clusters = 10, size.min = 30)
+clustering(tab, tab2, results, nb.max.clusters = 10, size.min = 30)
 }
 \arguments{
 \item{tab}{A data.table object containing the data on which the PCA has been performed.}
+
+\item{tab2}{A data.table object containing variables you want to add after performing the clustering for the description in each group.}
 
 \item{results}{A list with the results of a PCA.}
 
@@ -23,6 +25,7 @@ This function will perform a clustering from PCA results.
 }
 \note{
 Clusters with a size inferior to what is specified inside the argument \code{size.min} will be removed.
+Results will be added only after the clustering is done, as it is a non-supervised one.
 }
 \examples{
 ## You want to get a maximum of 8 clusters with at least 20 individuals in each of them :
