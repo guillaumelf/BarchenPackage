@@ -4,24 +4,22 @@
 \alias{display_pca_results}
 \title{Displays PCA results}
 \usage{
-display_pca_results(res_pca, axe1 = 1, axe2 = 2)
+display_pca_results(res_pca, axe = 1)
 }
 \arguments{
 \item{res_pca}{A list containing the PCA results.}
 
-\item{axe1}{A numeric indicating the first axis you want to use to plot the factorial plan. Default value is 1.}
-
-\item{axe2}{A numeric indicating the second axis you want to use to plot the factorial plan. Default value is 2.}
+\item{axe}{A numeric indicating the first axis you want to use to plot the factorial plan. Default value is 1.}
 }
 \value{
-Plots the factorial plan you chose as well as PCA results for these axis.
+A data.frame object with the results of the axis.
 }
 \description{
-This function will plot the factorial plan of your choice as well as the table with contribution (CTR) and \code{COS²} of each individual on the correspondant axis.
+This function will display the table with contribution (CTR) and \code{COS²} of each individual on the axis of your choice.
 }
 \examples{
-## You want to see the results on the first factorial plan
+## You want to see the results of the first axis :
 
-display_pca_results(res_pca, axe1 = 1, axe2 = 2)
+display_pca_results(res_pca, axe = 1)
 }
 
