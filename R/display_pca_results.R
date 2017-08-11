@@ -13,11 +13,12 @@
 
 display_pca_results <- function(res_pca, axe = 1){
   
-  axe1_ind <- data.frame(CTR = res_pca$ind$contrib[,axe1], COS2 = res_pca$ind$cos2[,axe1], coord = res_pca$ind$coord[,axe1])
+  axe1_ind <- data.frame(CTR = round(res_pca$ind$contrib[,axe],2), COS2 = round(res_pca$ind$cos2[,axe],2), coord = round(res_pca$ind$coord[,axe],2))
   axe1_ind <- data.table(axe1_ind, keep.rownames=TRUE)
   axe1_ind[, seuil := 1/nrow(axe1_ind)]
   axe1_ind <- axe1_ind[CTR > seuil][order(-CTR)]
   axe1_ind[, seuil := NULL]
   axe1_ind <- as.data.frame(axe1_ind)
+  names(axe1_ind) <- c("Individu","CTR","COS2","Coordonnée")
   return(axe1_ind)
 }
