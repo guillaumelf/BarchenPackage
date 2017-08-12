@@ -38,13 +38,13 @@ do_pca <- function(tab,inertie_percentage = 95){
 
 remove_outliers <- function(tab,results,min.inertie = 5,ctr.min = 2){
   
-  inertie <- data.table(inertie = res_pca$eig$`percentage of variance`)
+  inertie <- data.table(inertie = results$eig$`percentage of variance`)
   inertie[, fictif := ifelse(inertie >= min.inertie, 1,0)]
   inertie <- inertie[fictif == 1]
   
   liste_outliers <- c()
   for(i in 1:nrow(inertie)){
-    axe_ind <- data.frame(CTR = res_pca$ind$contrib[,i], COS2 = res_pca$ind$cos2[,i], coord = res_pca$ind$coord[,i])
+    axe_ind <- data.frame(CTR = results$ind$contrib[,i], COS2 = results$ind$cos2[,i], coord = results$ind$coord[,i])
     
     # On ne garde que les individus dont la contribution est > à 1/n
     
