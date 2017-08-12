@@ -7,12 +7,12 @@
 cluster_description(tab, cluster.label = 1)
 }
 \arguments{
-\item{tab}{A data.table object containing the original data with cluster labes associated to each individual.}
+\item{tab}{A data.table object containing the original data with cluster labels associated to each individual.}
 
 \item{cluster.label}{A numeric indicating which cluster's characteristics you want to display. Default value is 1.}
 }
 \value{
-The data.frame with the results will be displayed.
+The data.frame with the results.
 }
 \description{
 This function will display the results of the \code{v.test} on each cluster, showing variables that distinguish these individuals from others the most.
