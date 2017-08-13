@@ -4,10 +4,12 @@
 \alias{cluster_description}
 \title{Displays cluster description}
 \usage{
-cluster_description(tab, cluster.label = 1)
+cluster_description(tab, desc, cluster.label = 1)
 }
 \arguments{
 \item{tab}{A data.table object containing the original data with cluster labels associated to each individual.}
+
+\item{desc}{A list object inheriting from the \code{catdes} function.}
 
 \item{cluster.label}{A numeric indicating which cluster's characteristics you want to display. Default value is 1.}
 }

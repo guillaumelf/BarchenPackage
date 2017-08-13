@@ -57,7 +57,7 @@ affiche_duration <- function(tab){
   resultat[, `Recommandation suivie ?` := ifelse(duree_moy_per_week >= 210,"oui","non")]
   
   ggplot(resultat)+aes(x = cluster,
-                       y = duree_moy_per_week,fill = `Recommandation suivie ?`)+geom_bar(stat="identity")+ggtitle("Durée moyenne (en minutes) \n passée sur la plateforme")+labs(x = "Clusters",y = "Durée")+theme(plot.title = element_text(hjust = 0.5))+geom_hline(yintercept=210,color = "blue", size=2)+scale_fill_manual(values=c("#FB1100","#00FB00"))
+                       y = duree_moy_per_week,fill = `Recommandation suivie ?`)+geom_bar(stat="identity")+ggtitle("Durée moyenne (en minutes) passée \n par semaine sur la plateforme")+labs(x = "Clusters",y = "Durée")+theme(plot.title = element_text(hjust = 0.5))+geom_hline(yintercept=210,color = "blue", size=2)+scale_fill_manual(values=c("#FB1100","#00FB00"))
   
 }
 

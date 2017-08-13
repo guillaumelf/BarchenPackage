@@ -3,6 +3,7 @@
 #' This function will display the results of the \code{v.test} on each cluster, showing variables that distinguish these individuals from others the most.
 #'
 #' @param tab A data.table object containing the original data with cluster labels associated to each individual.
+#' @param desc A list object inheriting from the \code{catdes} function.
 #' @param cluster.label A numeric indicating which cluster's characteristics you want to display. Default value is 1.
 #' @return The data.frame with the results.
 #' @examples
@@ -12,9 +13,9 @@
 #' cluster_description(tab,cluster.label = 5)
 #' @export
 
-cluster_description <- function(tab, cluster.label = 1){
-  desc <- FactoMineR::catdes(tab, num.var = which(names(tab)=="cluster"))
-  n <- length(levels(tab$cluster))
+cluster_description <- function(tab, desc, cluster.label = 1){
+  #desc <- FactoMineR::catdes(tab, num.var = which(names(tab)=="cluster"))
+  n <- length(levels(factor(tab$cluster)))
   liste <- list()
   for(i in 1:n){
     assign(paste0("cluster",i),desc[[2]][i])
