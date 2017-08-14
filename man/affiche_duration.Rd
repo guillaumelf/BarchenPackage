@@ -4,10 +4,12 @@
 \alias{affiche_duration}
 \title{Plots average duration of weekly work}
 \usage{
-affiche_duration(tab)
+affiche_duration(tab, phases = 5)
 }
 \arguments{
 \item{tab}{A data.table object containing the clustering data.}
+
+\item{phases}{A numeric indicating the number of phases. 5 is the default value.}
 }
 \value{
 A bar chart.
