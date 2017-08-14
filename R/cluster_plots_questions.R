@@ -51,7 +51,7 @@ affiche_tr_questions <- function(tab,phases = 5){
              width=0.5, colour="grey40", size=0.4, stat = "identity") + 
     scale_fill_discrete(drop=FALSE) +
     labs(x="phases",y="", title = "Evolution au cours du temps du nombre moyen de questions effectuées par session") +
-    theme(plot.title = element_text(hjust = 0.5),legend.position = 'none') +
+    theme(plot.title = element_text(hjust = 0.5),legend.title =  element_blank()) +
     facet_wrap(~cluster,nrow=2)+
     scale_fill_brewer(palette="Greens")
 }
