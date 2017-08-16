@@ -24,6 +24,7 @@ affiche_examb_success <- function(tab){
                                           1, 0),
                                    ifelse(score_moy_examblanc_A_t5 >= 0.85 & score_moy_examblanc_C_t5 >= 0.75,
                                           1, 0))]
+  
   res <- eb[, .(mean(reussite_eb_t3, na.rm = T),
                 mean(reussite_eb_t4, na.rm = T),
                 mean(reussite_eb_t5, na.rm = T)), by = cluster][order(cluster)]
