@@ -1,18 +1,30 @@
-#' Plots MOOC informations
+#' Plots cumulated informations
 #'
-#' This function will plot the cumulated number of MOOC chapters used and prepared during each phase, for each cluster.
+#' This function will plot the cumulated average number of questions (A and C) attempted during each phase, for each cluster.
 #'
 #' @param tab A data.table object containing the clustering data.
 #' @param phases A numeric indicating the number of phases. 5 is the default value.
 #' @return A bar chart.
 #' @examples
-#' affiche_mooc_cumulated(tab)
+#' affiche_questions_cumul(tab)
 #' @export
 
-affiche_mooc_cumulated <- function(tab,phases = 5){
+affiche_questions_cumul <- function(tab,phases = 5){
+  var <- c("cluster")
+  for (i in 1:phases){
+    var <- c(var,paste0("nb_training_attempt_t",i))
+  }
+  tab <- data.frame(tab)
+  inter <- tab[,var]
+  inter <- data.table(inter)
+  inter <- inter[, lapply(.SD, mean), by=cluster][order(cluster)]
+  attempts <- reshape2::melt(inter,id.vars = "cluster")
+  attempts <- attempts[, .(x = value)]
+  
+  
   names <- c("cluster")
   for (i in 1:phases){
-    names <- c(names,paste0("nb_mooc_used_t",i))
+    names <- c(names,paste0("nb_moy_questions_A_t",i))
   }
   tab <- data.frame(tab)
   res <- tab[,names]
@@ -24,8 +36,9 @@ affiche_mooc_cumulated <- function(tab,phases = 5){
   }
   names(res) <- noms
   new_data1 <- reshape2::melt(res,id.vars = "cluster")
-  new_data1 <- data.table(new_data1)
-  new_data1$type <- rep("Used",nrow(new_data1))
+  new_data1 <- data.table(new_data1,attempts)
+  new_data1[, value := value*x][, x := NULL]
+  new_data1$type <- rep("Niveau A",nrow(new_data1))
   value <- new_data1$value
   n <- as.numeric(length(levels(tab$cluster)))
   j = 1
@@ -47,7 +60,7 @@ affiche_mooc_cumulated <- function(tab,phases = 5){
   
   names <- c("cluster")
   for (i in 1:phases){
-    names <- c(names,paste0("nb_mooc_prepared_t",i))
+    names <- c(names,paste0("nb_moy_questions_C_t",i))
   }
   tab <- data.frame(tab)
   res <- tab[,names]
@@ -59,8 +72,9 @@ affiche_mooc_cumulated <- function(tab,phases = 5){
   }
   names(res) <- noms
   new_data2 <- reshape2::melt(res,id.vars = "cluster")
-  new_data2 <- data.table(new_data2)
-  new_data2$type <- rep("Prepared",nrow(new_data2))
+  new_data2 <- data.table(new_data2,attempts)
+  new_data2[, value := value*x][, x := NULL]
+  new_data2$type <- rep("Niveau C",nrow(new_data2))
   value <- new_data2$value
   n <- as.numeric(length(levels(tab$cluster)))
   j = 1
@@ -85,7 +99,7 @@ affiche_mooc_cumulated <- function(tab,phases = 5){
     geom_line(data=new_data,
               aes(x = variable, y = value, color = type, group=type),size=1.5) +
     scale_fill_discrete(drop=FALSE) +
-    labs(x="phases",y="") + ggtitle("Evolution du nombre cumulé de chapitres \n du MOOC utilisés et préparés dans chaque cluster") +
-    theme(plot.title = element_text(hjust = 0.5),legend.title = element_blank()) + 
-    facet_wrap(~cluster,nrow=2) + scale_color_manual(values=c("#FAF216","#590086"))
+    labs(x="phases",y="") + ggtitle("Evolution du nombre cumulé de questions A et C \n effectuées par période dans chaque cluster") +
+    theme(plot.title = element_text(hjust = 0.5),legend.title = element_blank()) +
+    facet_wrap(~cluster,nrow=2) + scale_color_manual(values=c("#F90019","#1000F3"))
 }
