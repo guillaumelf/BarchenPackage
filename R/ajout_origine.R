@@ -67,3 +67,33 @@ add_origin <- function(tab1,tab2){
   # On retourne la table
   return(tab2)
 }
+
+#' Extracts the origin of an individual
+#'
+#' This function will extract the suffixe of an e-mail address.
+#' 
+#' @param tab1 A data.table or data.frame object from which the email address comes from.
+#' @return The suffixe of the email address.
+#' @examples
+#' ## The email is in the users table. You want to add it to the logs table
+#' suffixe <- affiche_suffixe(users)
+#' @export
+
+affiche_suffixe <- function(tab1){
+  tab1[, c("c1","origine") := tstrsplit(email, "@", fixed=TRUE)]
+  tab1[, c1 := NULL]
+  tab1[, c("o1","o2") := tstrsplit(tolower(origine), ".fr", fixed=TRUE)]
+  tab1[, o2 := NULL]
+  tab1[, origine := NULL]
+  tab1[, c("o2","o3") := tstrsplit(o1, ".com", fixed=TRUE)]
+  tab1[, c("o1","o3") := NULL]
+  tab1[, c("o1","o3") := tstrsplit(o2, ".org", fixed=TRUE)]
+  tab1[, c("o2","o1") := NULL]
+  tab1[, c("o2","o1") := tstrsplit(o3, ".net", fixed=TRUE)]
+  tab1[, c("o3","o1") := NULL]
+  tab1[, c("o3","o1") := tstrsplit(o2, ".lu", fixed=TRUE)]
+  tab1[, c("o2","o1") := NULL]
+  tab1[, origine := o3]
+  tab1[, o3 := NULL]
+  return(tab1$origine)
+}

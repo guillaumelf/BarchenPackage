@@ -11,7 +11,7 @@ choix_seuil(obs_test, pred_test, seuils)
 
 \item{pred_test}{A numeric vector inheriting from a \code{predict} object.}
 
-\item{seuils}{A numeric vector with the values you want to try.}
+\item{seuils}{A numeric vector with the threshold values you want to try.}
 }
 \value{
 Plots the graph with the false positive and false negative rates for each threshold, and displays the table with the global error rate as well as false negative and false positive rates, for each threshold. Also indicates the optimal threshold
@@ -20,7 +20,7 @@ Plots the graph with the false positive and false negative rates for each thresh
 This function will help you when you have to choose a decision threshold to turn probabilities into binary values. Depending on your scoring problem, the false negatives and false positives haven't got the same level of importance so you can't keep a 0.5 decision threshold.
 }
 \note{
-A dataframe with the results as well as a graph of the errors will be returned in addition
+A dataframe with the results as well as a graph of the errors will be returned in addition.
 }
 \examples{
 ## Let's take an example with the SAheart dataset

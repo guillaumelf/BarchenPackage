@@ -28,7 +28,7 @@ vec_assign <- function(vecteur, seuil=0.5){
 #'
 #' @param obs_test A numeric or factor vector containing the observations from the test sample you try to predict.
 #' @param pred_test A numeric vector inheriting from a \code{predict} object.
-#' @param seuils A numeric vector with the values you want to try.
+#' @param seuils A numeric vector with the threshold values you want to try.
 #' @return Plots the graph with the false positive and false negative rates for each threshold, and displays the table with the global error rate as well as false negative and false positive rates, for each threshold. Also indicates the optimal threshold
 #' @examples
 #' ## Let's take an example with the SAheart dataset
@@ -45,7 +45,7 @@ vec_assign <- function(vecteur, seuil=0.5){
 #' choix_seuil(dtest$chd,predictions,seuils)
 #' 
 #' ## "Seuil minimisant le taux d'erreur global : 0.55"
-#' @note A dataframe with the results as well as a graph of the errors will be returned in addition
+#' @note A dataframe with the results as well as a graph of the errors will be returned in addition.
 #' @export
 
 choix_seuil <- function(obs_test,pred_test,seuils){
