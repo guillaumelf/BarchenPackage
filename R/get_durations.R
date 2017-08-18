@@ -21,6 +21,13 @@ get_durations <- function(list_tab,table){
   id <- data.table(userid = liste_id)
   
   for (i in 1:tranches){
+    if(nrow(get(paste0("log",i))) == 0){
+      assign(paste0("log",i),data.table(userid = unique(liste_id),
+                                            time = as.Date("2017-08-03 13:42:03")))
+    }
+  }
+  
+  for (i in 1:tranches){
     assign(paste0("tab_log",i),get(paste0("log",i))[, .(userid,time)])
     assign(paste0("tab_log",i),get(paste0("tab_log",i))[order(userid,time)])
     get(paste0("tab_log",i))[, c("time_lag") := .(shift(time, n = 1, type = "lead")), by = userid]
@@ -30,6 +37,12 @@ get_durations <- function(list_tab,table){
   
   for (i in 1:tranches){
     get(paste0("tab_log",i))[, ecart := difftime(time_lag,time,units = "secs")]
+  }
+  
+  for (i in 1:tranches){
+    if(nrow(get(paste0("tab_log",i))) == 1){
+      get(paste0("tab_log",i))[, ecart := 0]
+    }
   }
   
   # On a récupéré les écarts entre actions pour chaque individu, l'enjeu va maintenant être de détecter le nombre de sessions pour
