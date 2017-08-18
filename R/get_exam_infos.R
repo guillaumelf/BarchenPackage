@@ -133,6 +133,6 @@ get_exam_infos <- function(list_tab){
   }
   
   res <- unique(res)
-  res <- na_replace(res)
+  res <- na_replace(res,0)
   return(res)
 }
