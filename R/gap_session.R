@@ -56,12 +56,24 @@ gap_session <- function(list_tab){
   }
   head(session1,15)
   
+  for (i in 1:tranches){
+    if(nrow(get(paste0("session",i))) == 0){
+      assign(paste0("session",i),data.table(userid = unique(liste_id),
+                                            time = as.Date("2017-08-03 13:42:03"),
+                                            action = "login",
+                                            idate = as.IDate("2017-08-03"),
+                                            action_lag = "login",
+                                            date_lag = as.IDate("2017-08-03"),
+                                            time_lag = as.Date("2017-08-03 13:42:03")))
+    }
+  }
+  
   # Il ne reste plus qu'à calculer l'écart entre la colonne time et time_lag
   
   for (i in 1:tranches){
-    get(paste0("session",i))[, delta_connexion := difftime(time,time_lag,units = "hours")]
-    get(paste0("session",i))[, delta_connexion := as.numeric(delta_connexion)]
-    get(paste0("session",i))[, delta_connexion := round(delta_connexion,2)]
+      get(paste0("session",i))[, delta_connexion := difftime(time,time_lag,units = "hours")]
+      get(paste0("session",i))[, delta_connexion := as.numeric(delta_connexion)]
+      get(paste0("session",i))[, delta_connexion := round(delta_connexion,2)]
   }
   
   # Maintenant on peut calculer la moyenne

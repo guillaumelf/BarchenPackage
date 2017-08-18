@@ -10,7 +10,7 @@
 
 select_modelisation <- function(tab){
   decision <- data.table(variable = names(tab),
-                         presence = (stringr::str_detect(names(tab),"userid") | stringr::str_detect(names(tab),"t4") | stringr::str_detect(names(tab),"t5") | stringr::str_detect(names(tab),"resultat") | stringr::str_detect(names(tab),"duree_totale_plateforme") | stringr::str_detect(names(tab),"nb_total_mooc_used")| stringr::str_detect(names(tab),"nb_total_mooc_prepared") | stringr::str_detect(names(tab),"proportion_mooc_prepared") | stringr::str_detect(names(tab),"proportion_mooc_used") | stringr::str_detect(names(tab),"nb_total_questions") ) )
+                         presence = (stringr::str_detect(names(tab),"userid") | stringr::str_detect(names(tab),"t4") | stringr::str_detect(names(tab),"t5") | stringr::str_detect(names(tab),"resultat") | stringr::str_detect(names(tab),"duree_totale_plateforme") | stringr::str_detect(names(tab),"nb_total_mooc_used")| stringr::str_detect(names(tab),"nb_total_mooc_prepared") | stringr::str_detect(names(tab),"proportion_mooc_prepared") | stringr::str_detect(names(tab),"proportion_mooc_used") ) )
   retenues <- decision[presence == FALSE]$variable
   tab <- as.data.frame(tab)
   tab <- tab[, retenues]
