@@ -6,7 +6,7 @@
 #' @param newdata A data.table object containing the test dataset.
 #' @return A data.table object with the results wanted.
 #' @examples
-#' tab <- create_dtest(tab,newdata)
+#' tab <- create_dtest2(tab,newdata)
 #' @export
 
 create_dtest2 <- function(tab,newdata){

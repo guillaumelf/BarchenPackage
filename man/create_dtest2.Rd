@@ -18,6 +18,6 @@ A data.table object with the results wanted.
 This function will create a dataframe in order to perform predictions.
 }
 \examples{
-tab <- create_dtest(tab,newdata)
+tab <- create_dtest2(tab,newdata)
 }
 
