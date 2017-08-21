@@ -35,7 +35,7 @@ description_duration <- function(tab,phases){
              aes(x = variable, y = value, fill = color),
              width=0.5, colour="grey40", size=0.4, stat = "identity") + 
     scale_fill_discrete(drop=FALSE) +
-    labs(x="phases",y="") + ggtitle("Evolution du temps moyen passé (en minutes) \n par semaine sur la plateforme par phase") +
+    labs(x="phases",y="") + ggtitle("Evolution du temps moyen passé (en minutes) par semaine sur la plateforme") +
     theme(plot.title = element_text(hjust = 0.5),legend.position='none') + geom_hline(yintercept=210,color = "blue", size=1.5) + 
     scale_fill_manual(values=c("#FB1100","#00FB00")) +
     facet_wrap(~resultat,nrow=1) 
