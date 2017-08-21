@@ -38,5 +38,5 @@ description_duration <- function(tab,phases){
     labs(x="phases",y="") + ggtitle("Evolution du temps moyen passé (en minutes) \n par semaine sur la plateforme par phase") +
     theme(plot.title = element_text(hjust = 0.5),legend.position='none') + geom_hline(yintercept=210,color = "blue", size=1.5) + 
     scale_fill_manual(values=c("#FB1100","#00FB00")) +
-    facet_wrap(~resultat,nrow=2) 
+    facet_wrap(~resultat,nrow=1) 
 }

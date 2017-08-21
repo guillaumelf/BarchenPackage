@@ -36,5 +36,5 @@ description_nb_mooc_used <- function(tab,phases){
     scale_fill_discrete(drop=FALSE) +
     labs(x="phases",y="") + ggtitle("Evolution au cours du temps du \n nombre moyen de chapitres du MOOC utilisés") +
     theme(plot.title = element_text(hjust = 0.5),legend.position = 'none') + scale_fill_manual(values=c("#590086")) +
-    facet_wrap(~resultat,nrow=2)
+    facet_wrap(~resultat,nrow=1)
 }
