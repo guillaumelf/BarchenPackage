@@ -11,6 +11,7 @@
 #' @export
 
 get_distance <- function(tab, ind, k){
+  infos <- data.table(userid = rownames(tab),cluster = tab$cluster, resultat = tab$resultat)
   tab <- scale(tab, center = FALSE, scale = TRUE)
   tab <- data.table(tab)
   tab[is.na(tab)] <- 0
