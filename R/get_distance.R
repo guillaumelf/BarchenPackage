@@ -4,14 +4,14 @@
 #'
 #' @param tab A data.table object containing the clustering data.
 #' @param ind A character indicating the userid number of the individual you want to compare to others.
+#' @param infos A data.table object containing the clusters and results at the exam.
 #' @param k A numeric indicating how much nearest neighbours you want to keep.
 #' @return A dataset with the k-nearest neighbours.
 #' @examples
 #' get_distance(tab)
 #' @export
 
-get_distance <- function(tab, ind, k){
-  infos <- data.table(userid = rownames(tab),cluster = tab$cluster, resultat = tab$resultat)
+get_distance <- function(tab, infos, ind, k){
   tab <- scale(tab, center = FALSE, scale = TRUE)
   tab <- data.table(tab)
   tab[is.na(tab)] <- 0

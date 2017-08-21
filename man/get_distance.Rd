@@ -4,10 +4,12 @@
 \alias{get_distance}
 \title{Calculates euclidean distance}
 \usage{
-get_distance(tab, ind, k)
+get_distance(tab, infos, ind, k)
 }
 \arguments{
 \item{tab}{A data.table object containing the clustering data.}
+
+\item{infos}{A data.table object containing the clusters and results at the exam.}
 
 \item{ind}{A character indicating the userid number of the individual you want to compare to others.}
 
