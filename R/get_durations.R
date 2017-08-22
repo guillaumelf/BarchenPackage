@@ -139,6 +139,7 @@ get_durations <- function(list_tab,table){
   for (i in 1:tranches){
     get(paste0("res",i))[, userid := as.character(userid)]
     setkey(get(paste0("res", i)),userid)
+    assign(paste0("res", i),unique(get(paste0("res", i))))
     assign("id",merge(id,get(paste0("res", i)),all.x = TRUE))
   }
   id <- na_replace(id,0)
