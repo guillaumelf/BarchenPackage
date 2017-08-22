@@ -16,5 +16,8 @@ clean_table <- function(tab){
   retenus <- table[res <= 6]$userid
   tab <- tab[userid %in% retenus]
   
+  doublons <- tab[, .N, by = userid][N > 1]$userid
+  tab <- tab[!(userid %in% doublons)]
+  
   return(tab)
 }

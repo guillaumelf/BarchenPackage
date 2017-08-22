@@ -82,5 +82,5 @@ plot.clusters <- function(tab){
   }
   cluster <- factor(cluster)
   res <- data.frame(cluster,size)
-  rAmCharts::amBarplot(x = "cluster", y = "size",data = res, main = "Nombre d'individus au sein des clusters retenus")
+  rAmCharts::amBarplot(x = "cluster", y = "size",data = res, ylim = c(0,max(res$size)+1), main = "Nombre d'individus au sein des clusters retenus")
 }
