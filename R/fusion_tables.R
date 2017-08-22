@@ -42,22 +42,21 @@ create_qr <- function(tab1,tab2,tab3){
   
   setkey(tab1,attempt)
   setkey(tab3,uniqueid)
-  tab <- tab1[tab3, nomatch=0]
+  tab1 <- tab1[tab3, nomatch=0]
   
   # Filtrage sur les lignes
   
-  tab <- tab[seq_number == 2]
+  tab1 <- tab1[seq_number == 2]
   
   # Création de la variable niveau
   # CASE q.defaultgrade WHEN '1000.000' THEN 'C' ELSE 'A' END AS niveau
   
-  tab[,niveau := ifelse(defaultgrade == 1000,"C","A")]
-  tab$niveau <- as.factor(tab$niveau)
+  tab1[,niveau := ifelse(defaultgrade == 1000,"C","A")]
+  tab1$niveau <- as.factor(tab1$niveau)
   
   # Sélection des colonnes
   
-  
-  qr <- tab[,.(grade, timestamp, userid, niveau, name, attempt, exam )]
+  qr <- tab1[,.(grade, timestamp, userid, niveau, name, attempt, exam )]
   qr[,c("idate","time") := tstrsplit(timestamp, " ", fixed=TRUE)][, time := NULL]
   qr[, idate := as.IDate(idate)]
   return(qr)
