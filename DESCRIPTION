@@ -9,6 +9,7 @@ Description: This package will enable Barchen workers to analyze their students 
     by Datastorm. Machine Learning algorithms such as Logistic Regression, Random Forest or k-means will also be used to perform predictions.
 Depends: bestglm (>= 0.36),
     caret (>= 6.0-76),
+    colourpicker (>= 0.3),
     data.table (>= 1.9.6),
     dplyr,
     FactoMineR (>= 1.31.3),
