@@ -18,6 +18,7 @@ clean_table <- function(tab){
   
   doublons <- tab[, .N, by = userid][N > 1]$userid
   tab <- tab[!(userid %in% doublons)]
+  tab <- tab[proportion_mooc_used <= 1]
   
   return(tab)
 }

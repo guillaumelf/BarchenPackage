@@ -23,6 +23,7 @@ Depends: bestglm (>= 0.36),
     SDMTools (>= 1.1-221),
     shiny (>= 1.0.2),
     shinythemes (>= 1.0),
+    shinyWidgets (>= 0.3.0),
     visNetwork (>= 2.0.0)
 License: no license
 Encoding: UTF-8
