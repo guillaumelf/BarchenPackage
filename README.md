@@ -25,7 +25,7 @@ Ce package contient principalement des fonctions permettant :
 
 Pour avoir la liste de toutes les fonctions du package, c'est très simple, il vous suffit de cliquer sur l'onglet 'Packages'.   
 
-![](/home/guillaume/BarchenPackage/pictures/rmd1.png)
+![img1](/home/guillaume/BarchenPackage/pictures/rmd1.png)
 
 Puis sur le package Barchen.  
 
@@ -37,4 +37,4 @@ Vous avez une liste de fonctions qui apparaît. Vous pouvez consulter l'aide de 
 
 Ou bien en tapant dans la console le nom de la fonction précédé d'un '?'  
 
-![](C:\Users\Guillaume\Downloads\rmd4.png)
+![](/home/guillaume/BarchenPackage/pictures/rmd4.png)
