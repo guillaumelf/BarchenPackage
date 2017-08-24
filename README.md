@@ -37,4 +37,4 @@ Vous avez une liste de fonctions qui apparaît. Vous pouvez consulter l'aide de 
 
 Ou bien en tapant dans la console le nom de la fonction précédé d'un '?'  
 
-![](/home/guillaume/BarchenPackage/pictures/rmd4.png)
+![](C:\Users\Guillaume\Downloads\rmd4.png)
