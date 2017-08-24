@@ -10,7 +10,7 @@ N'étant pas disponible sur le CRAN, l'installation de ce package sur votre mach
 
 ## Etape 2 - Chargement du package
 
-Le package est maintenant installé sur votre machine, il faut maintenant le charger dans votre environnement de travail à l'aide de la commande suivante : `library(Barchen)`
+Le package est installé sur votre machine, il faut maintenant le charger dans votre environnement de travail à l'aide de la commande suivante : `library(Barchen)`
 
 ## Etape 3 - Utilisation des fonctions
 
