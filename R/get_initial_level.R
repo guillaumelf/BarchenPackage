@@ -10,6 +10,7 @@
 #' @export
 
 get_initial_level <- function(list_tab,userid = NULL){
+  id <- userid
   tab_qr1 <- list_tab[[1]]
   nb_q <- tab_qr1[, .N, by = userid]
   
@@ -29,7 +30,7 @@ get_initial_level <- function(list_tab,userid = NULL){
   # On va regarder le taux de réussite après 100 questions, cela nous donnera le score initial
   
   if(nrow(tab_qr1) == 0){
-    res <- data.table(userid,niveau_initial_A = 0,niveau_initial_C = 0)
+    res <- data.table(id,niveau_initial_A = 0,niveau_initial_C = 0)
   } else {
     res_A <- tab_qr1[niveau == "A", .(niveau_initial_A = round(mean(grade),2)), by = .(userid)]
     res_C <- tab_qr1[niveau == "C", .(niveau_initial_C = round(mean(grade),2)), by = .(userid)]
