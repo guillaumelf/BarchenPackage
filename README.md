@@ -25,7 +25,7 @@ Ce package contient principalement des fonctions permettant :
 
 Pour avoir la liste de toutes les fonctions du package, c'est très simple, il vous suffit de cliquer sur l'onglet 'Packages'.   
 
-![img1](file:///C:/Users/Guillaume/Téléchargements/rmd1.png)
+![img1](https://github.com/guillaumelf/BarchenPackage/blob/master/pictures/rmd1.png)
 
 Puis sur le package Barchen.  
 
