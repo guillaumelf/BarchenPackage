@@ -37,4 +37,8 @@ Vous avez une liste de fonctions qui apparaît. Vous pouvez consulter l'aide de 
 
 Ou bien en tapant dans la console le nom de la fonction précédé d'un '?'  
 
+<<<<<<< HEAD
 ![img4](/home/guillaume/BarchenPackage/pictures/rmd4.png)
+=======
+![](/home/guillaume/BarchenPackage/pictures/rmd4.png)
+>>>>>>> 6a9d95083fcd559f3ec455ba26e8816466ac29a8
