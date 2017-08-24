@@ -25,18 +25,18 @@ Ce package contient principalement des fonctions permettant :
 
 Pour avoir la liste de toutes les fonctions du package, c'est très simple, il vous suffit de cliquer sur l'onglet 'Packages'.   
 
-![img1](/home/guillaume/BarchenPackage/pictures/rmd1.png)
+![img1](https://github.com/guillaumelf/BarchenPackage/blob/master/pictures/rmd1.png)
 
 Puis sur le package Barchen.  
 
-![img2](/home/guillaume/BarchenPackage/pictures/rmd2.png)
+![img2](https://github.com/guillaumelf/BarchenPackage/blob/master/pictures/rmd2.png)
 
 Vous avez une liste de fonctions qui apparaît. Vous pouvez consulter l'aide de la fonction en cliquant directement dessus.  
 
-![img3](/home/guillaume/BarchenPackage/pictures/rmd3.png)
+![img3](https://github.com/guillaumelf/BarchenPackage/blob/master/pictures/rmd3.png)
 
 Ou bien en tapant dans la console le nom de la fonction précédé d'un '?'  
 
-![img4](/home/guillaume/BarchenPackage/pictures/rmd4.png)
+![img4](https://github.com/guillaumelf/BarchenPackage/blob/master/pictures/rmd4.png)
 
 
