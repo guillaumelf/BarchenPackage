@@ -4,12 +4,12 @@
 \alias{get_initial_level}
 \title{Adds informations about the initial level}
 \usage{
-get_initial_level(list_tab, userid = NULL)
+get_initial_level(list_tab, id = NULL)
 }
 \arguments{
 \item{list_tab}{A list of tables.}
 
-\item{userid}{A character indicating the userid you want to create. Default value is \code{NULL}.}
+\item{id}{A character indicating the userid you want to create. Default value is \code{NULL}.}
 }
 \value{
 A data.table object with the results for each indivdual.

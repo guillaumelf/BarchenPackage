@@ -3,14 +3,14 @@
 #' This function will calculate the initial level in terms of scores after 100 questions for each individual.
 #'
 #' @param list_tab A list of tables.
-#' @param userid A character indicating the userid you want to create. Default value is \code{NULL}.
+#' @param id A character indicating the userid you want to create. Default value is \code{NULL}.
 #' @return A data.table object with the results for each indivdual.
 #' @examples
 #' tab <- get_initial_level(liste_qr)
 #' @export
 
-get_initial_level <- function(list_tab,userid = NULL){
-  id <- userid
+get_initial_level <- function(list_tab,id = NULL){
+  id_default <- id
   tab_qr1 <- list_tab[[1]]
   nb_q <- tab_qr1[, .N, by = userid]
   
@@ -30,7 +30,7 @@ get_initial_level <- function(list_tab,userid = NULL){
   # On va regarder le taux de réussite après 100 questions, cela nous donnera le score initial
   
   if(nrow(tab_qr1) == 0){
-    res <- data.table(id,niveau_initial_A = 0,niveau_initial_C = 0)
+    res <- data.table(userid = id_default,niveau_initial_A = 0,niveau_initial_C = 0)
   } else {
     res_A <- tab_qr1[niveau == "A", .(niveau_initial_A = round(mean(grade),2)), by = .(userid)]
     res_C <- tab_qr1[niveau == "C", .(niveau_initial_C = round(mean(grade),2)), by = .(userid)]
