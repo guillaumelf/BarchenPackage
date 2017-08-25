@@ -107,5 +107,6 @@ create_results <- function(succes,echec,resultats_vi,users){
   names(resultats) <- c("userid","%A","%C","resultat","inscription","examen")
   resultats[, delta := difftime(examen,inscription,units = "days")]
   resultats$delta <- as.numeric(resultats$delta)
+  resultats <- resultats[delta > 0]
   return(resultats)
 }
