@@ -123,6 +123,5 @@ affiche_progression <- function(tab,phases = 5){
     scale_fill_discrete(drop=FALSE) +
     labs(x="phases",y="") + ggtitle("Progression des scores aux entraînement \n et temps passé sur la plateforme (en cumulé)") +
     theme(plot.title = element_text(hjust = 0.5),legend.title = element_blank()) +
-    theme(plot.title = element_text(hjust = 0.5),legend.title = element_blank()) +
     facet_wrap(~cluster,nrow=2) + scale_color_manual(values=c("#F30800","#2100C6","#00A40B"))
 }

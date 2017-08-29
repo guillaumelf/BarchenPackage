@@ -31,8 +31,8 @@ affiche_repartition <- function(tab){
 affiche_resultats <- function(tab){
   resultat <- tab[, .(success_rate = round(mean(resultat),2)), by = cluster][order(cluster)]
   resultat[success_rate <= 0.7, color := "#FB1900"]
-  resultat[success_rate > 0.7 & success_rate < 0.85, color := "#FB7500"]
-  resultat[success_rate >= 0.85, color := "#00FB00"]
+  resultat[success_rate > 0.7 & success_rate < 0.80, color := "#FB7500"]
+  resultat[success_rate >= 0.80, color := "#00FB00"]
   amBarplot(x = "cluster", y = "success_rate",
             data = resultat, legend = FALSE, ylim = c(0,1),
             show_values = TRUE,
