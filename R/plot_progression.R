@@ -95,8 +95,8 @@ affiche_progression <- function(tab,phases = 5){
   names(res) <- noms
   new_data3 <- reshape2::melt(res,id.vars = "cluster")
   new_data3 <- data.table(new_data3)
-  new_data3[, value := value/60]
-  new_data3$type <- rep("Durée totale (en heures)",nrow(new_data3))
+  new_data3[, value := value/(60*24)]
+  new_data3$type <- rep("Durée totale (en jours)",nrow(new_data3))
   value <- new_data3$value
   n <- as.numeric(length(levels(tab$cluster)))
   j = 1
@@ -121,7 +121,7 @@ affiche_progression <- function(tab,phases = 5){
     geom_line(data=new_data,
               aes(x = variable, y = value, color = type, group=type),size=1) +
     scale_fill_discrete(drop=FALSE) +
-    labs(x="phases",y="") + ggtitle("Progression des scores aux entraînement \n et évolution du temps passé sur la plateforme (en cumulé)") +
+    labs(x="phases",y="") + ggtitle("Progression des scores aux entraînement \n et temps passé sur la plateforme (en cumulé)") +
     theme(plot.title = element_text(hjust = 0.5),legend.title = element_blank()) +
     theme(plot.title = element_text(hjust = 0.5),legend.title = element_blank()) +
     facet_wrap(~cluster,nrow=2) + scale_color_manual(values=c("#F30800","#2100C6","#00A40B"))
