@@ -31,3 +31,5 @@ Depends: bestglm (>= 0.36),
 License: no license
 Encoding: UTF-8
 LazyData: true
+Suggests: knitr
+VignetteBuilder: knitr
