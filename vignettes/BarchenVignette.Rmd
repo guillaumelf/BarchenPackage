@@ -87,43 +87,42 @@ Les deux derniers fichiers servent à spécifier le type d'examen passé par un 
 ## Le fichier 'certificats.xlsx'
 
 ```{r, warning=FALSE}
-path <- "/home/guillaume/Livraison_finale/data/"
-succes <- data.table(read_excel(paste0(path,"certificats.xlsx"), sheet = "Feuil1"))
+data("succes",package = "Barchen")
 knitr::kable(head(succes, 5))
 ```
 
 ## Le fichier 'envoiEchecs.xlsm'
 
 ```{r, warning=FALSE}
-echec <- data.table(read_excel(paste0(path,"envoiEchecs.xlsm"), sheet = "Feuil1", col_names = TRUE, skip = 1))
+data("echec",package = "Barchen")
 knitr::kable(head(echec, 5))
 ```
 
 ## Le fichier 'Extraction Résultats Validation Interne.xlsx'
 
 ```{r, warning=FALSE}
-res_vi <- data.table(read_excel(paste0(path,"Extraction Résultats Validation Interne.xlsx")))
+data("res_vi",package = "Barchen")
 knitr::kable(head(res_vi, 5))
 ```
 
 ## Le fichier 'Stats formation.xlsx'
 
 ```{r, warning=FALSE}
-infos_fp <- data.table(read_excel(paste0(path,"Stats formation.xlsx")))
+data("infos_fp",package = "Barchen")
 knitr::kable(head(infos_fp, 5))
 ```
 
 ## Le fichier 'COMPILATION_résultats BPCE 2016.xlsx'
 
 ```{r, warning=FALSE}
-infos_exam2016 <- data.table(read_excel(paste0(path,"COMPILATION_résultats BPCE 2016.xlsx")))
+data("infos_exam2016",package = "Barchen")
 knitr::kable(head(infos_exam2016, 5))
 ```
 
 ## Le fichier 'Complilation_Résultats BPCE 2017.xlsx'
 
 ```{r, warning=FALSE}
-infos_exam2017 <- data.table(read_excel(paste0(path,"Complilation_Résultats BPCE 2017.xlsx")))
+data("infos_exam2017",package = "Barchen")
 knitr::kable(head(infos_exam2017, 5))
 ```
 
