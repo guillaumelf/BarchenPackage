@@ -6,7 +6,7 @@ Pour l'utiliser c'est très simple, il vous suffit de suivre la procédure suiva
 
 ## Etape 1 - Installation du package
 
-N'étant pas disponible sur le CRAN, l'installation de ce package sur votre machine doit se faire en exécutant la commande suivante : `devtools::install_github("guillaumelf/BarchenPackage")`
+N'étant pas disponible sur le CRAN, l'installation de ce package sur votre machine doit se faire en exécutant la commande suivante : `devtools::install_github("guillaumelf/BarchenPackage",build_vignettes = TRUE)`
 
 ## Etape 2 - Chargement du package
 
