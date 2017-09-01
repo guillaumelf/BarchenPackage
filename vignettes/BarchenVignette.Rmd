@@ -10,52 +10,137 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
-
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
-
-## Vignette Info
-
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
-
-## Styles
-
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
-```
-
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
-
 Ce document est un complément de la documentation des fonctions. Il va vous permettre d'observer le cheminement dans la construction de la base de travail, ainsi que le contenu de certaines fonctions, afin que vous puissiez utiliser ce package au mieux et le comprendre un peu plus en détail.
+
+Il vous faudra bien-sûr installer le package au préalable. Pour cela, vous trouverez toutes les infomations ici : <https://github.com/guillaumelf/BarchenPackage>
+
+Une fois que c'est fait, il ne reste plus qu'à charger le package
+
+```{r, message=FALSE, warning=FALSE}
+library(Barchen)
+```
+
+# L'extraction d'une table à partir du server
+
+La première étape consiste à extraire les données à la source, si on veut pouvoir les exploiter. La commande suivante `Barchen::extract_table()` nous permet de réaliser ce travail. Vous pouvez consulter l'aide de cette fonction afin de regarder les arguments qu'elle prend en entrée.
+
+```{r}
+?extract_table
+```
+
+Il faut déclarer une connexion à l'aide des instructions suivantes
+
+```{r}
+username <- 'datastorm'
+mdp <- 'Qes2CYrVGZ6SR8NTAenQ'
+nom_base <- 'barchen_prod'
+port_hote <- '188.165.234.113'
+
+mydb <- DBI::dbConnect(MySQL(), user=username, password=mdp,
+                  dbname=nom_base, host=port_hote)
+
+# changement de l'encoding de retour
+
+dbSendQuery(mydb, "SET character_set_results = 'utf8'")
+```
+
+Ensuite dans notre exemple on va extraire les logs à la date du jour
+
+```{r}
+date <- Sys.Date()
+condition <- paste0("time >= '",date,"'")
+logs <- extract_table(mydb,"mdl_log",condition)
+knitr::kable(head(logs, 10))
+```
+
+Ensuite on va modifier le format de la variable `time`
+
+```{r}
+logs[, time := as.POSIXct(time, origin = "1970-01-01")]
+knitr::kable(head(logs, 10))
+```
+
+Le principe sera le même avec les autres tables que vous voudrez extraire.
+
+Si vous n'avez pas d'accès, vous pouvez charger le fichier d'exemple
+
+```{r, message=FALSE, warning=FALSE}
+data("logs",package = "Barchen")
+knitr::kable(head(logs, 10))
+```
+
+
+# L'ajout d'informations à partir de fichiers externes
+
+Pour constituer la base de travail, certaines informations ont dû être ajoutées à partir de fichiers **excel**, toutes les variables n'étant pas présentes sur le server. La liste des fichiers utilisés est la suivante :
+
+* L'ensemble des certificats AMF attribués depuis 2010 : *certificats.xlsx*
+* L'ensemble des échecs à l'examen AMF depuis 2010 : *envoiEchecs.xlsm*
+* Les résultats à l'examen de Validation Interne : *Extraction Résultats Validation Interne.xlsx*
+* Les informations concernant la formation présentielle : *Stats formation.xlsx*
+* *COMPILATION_résultats BPCE 2016.xlsx*
+* *Complilation_Résultats BPCE 2017.xlsx*
+
+Les deux derniers fichiers servent à spécifier le type d'examen passé par un individu (examen certifié, double échelle ou validation interne). Nous allons regarder brièvement comment ces fichiers sont constitués. 
+**Il est primordial d'utiliser des fichiers ayant la même structure (noms de colonnes identiques) pour pouvoir reconstruire une base d'étude dans le futur.**
+
+## Le fichier 'certificats.xlsx'
+
+```{r, warning=FALSE}
+path <- "/home/guillaume/Livraison_finale/data/"
+succes <- data.table(read_excel(paste0(path,"certificats.xlsx"), sheet = "Feuil1"))
+knitr::kable(head(succes, 5))
+```
+
+## Le fichier 'envoiEchecs.xlsm'
+
+```{r, warning=FALSE}
+echec <- data.table(read_excel(paste0(path,"envoiEchecs.xlsm"), sheet = "Feuil1", col_names = TRUE, skip = 1))
+knitr::kable(head(echec, 5))
+```
+
+## Le fichier 'Extraction Résultats Validation Interne.xlsx'
+
+```{r, warning=FALSE}
+res_vi <- data.table(read_excel(paste0(path,"Extraction Résultats Validation Interne.xlsx")))
+knitr::kable(head(res_vi, 5))
+```
+
+## Le fichier 'Stats formation.xlsx'
+
+```{r, warning=FALSE}
+infos_fp <- data.table(read_excel(paste0(path,"Stats formation.xlsx")))
+knitr::kable(head(infos_fp, 5))
+```
+
+## Le fichier 'COMPILATION_résultats BPCE 2016.xlsx'
+
+```{r, warning=FALSE}
+infos_exam2016 <- data.table(read_excel(paste0(path,"COMPILATION_résultats BPCE 2016.xlsx")))
+knitr::kable(head(infos_exam2016, 5))
+```
+
+## Le fichier 'Complilation_Résultats BPCE 2017.xlsx'
+
+```{r, warning=FALSE}
+infos_exam2017 <- data.table(read_excel(paste0(path,"Complilation_Résultats BPCE 2017.xlsx")))
+knitr::kable(head(infos_exam2017, 5))
+```
+
+
+# Quelques exemples de graphiques
+
+Une fois la base de travail obtenue et nettoyée, vous êtes en mesure de l'analyser en procédant à une *Analyse en Composantes Principales* (*notre étude ne comportant quasiment que des variables quantitatives*) puis à un **clustering** dérivant des résultats de l'**ACP**.
+
+Après avoir obtenu les différents clusters, il convient de les analyser afin de connaître leur composition. Pour cela, nous utiliserons une application **Shiny** afin de rendre les choses plus visuelles.
+
+Nous allons prendre quelques exemples des types de graphiques que vous pourrez retrouver dans l'application, afin que vous puissiez mieux comprendre le code présent dans les scripts.
+
+On commence par charger le jeu de données d'exemple
+
+```{r}
+data("clustering",package = "Barchen")
+```
+
+Puis un exemple
+
