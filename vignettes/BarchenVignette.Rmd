@@ -10,7 +10,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Ce document est un complément de la documentation des fonctions. Il va vous permettre d'observer le cheminement dans la construction de la base de travail, ainsi que le contenu de certaines fonctions, afin que vous puissiez utiliser ce package au mieux et le comprendre un peu plus en détail.
+Ce document est un complément de la documentation des fonctions. Il va vous permettre d'observer le cheminement dans la construction de la base de travail, afin que vous puissiez utiliser ce package au mieux et le comprendre un peu plus en détail.
 
 Il vous faudra bien-sûr installer le package au préalable. Pour cela, vous trouverez toutes les infomations ici : <https://github.com/guillaumelf/BarchenPackage>
 
@@ -142,5 +142,32 @@ On commence par charger le jeu de données d'exemple
 data("clustering",package = "Barchen")
 ```
 
-Puis un exemple
+Puis un exemple de graphique tracé avec le package `ggplot2`
+
+```{r}
+affiche_nb_quest_cumul(tab)
+```
+
+Mais aussi un exemple de graphique tracé grace au package `rAmCharts`
+
+```{r}
+affiche_repartition(tab)
+```
+
+# Cheminement de l'étude
+
+L'ordre d'exécution des scripts est le suivant pour pouvoir refaire l'étude :
+
+1. *extraction_tables.R*
+1. *modification_tables.R*
+1. *calcul_agregats_logs.R*
+1. *calcul_agregats_questions.R*
+1. *assemblage_nettoyage.R*
+1. *pca_clustering.R*
+1. *illustration_clusters.R*
+1. *prediction.R*
+
+
+
+
 
