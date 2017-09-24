@@ -34,7 +34,7 @@ vec_assign <- function(vecteur, seuil=0.5){
 #' ## Let's take an example with the SAheart dataset
 #' ## You can run the following code :
 #' 
-#' data("SAheart")
+#' data("SAheart", package="bestglm")
 #' set.seed(234)
 #' indapp <- sample(1:nrow(SAheart),nrow(SAheart)*(2/3),replace=FALSE)
 #' dapp <- SAheart[indapp,]
